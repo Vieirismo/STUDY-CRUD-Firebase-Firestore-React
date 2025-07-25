@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { setPlansAction, addPlansAction, updatePlansAction, getPlansAction } from './services/actions/plans_actions';
 import { getPlansObserver } from './services/observers/plansObserver';
 
 function App() {
+  const [plans, setPlans] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
   useEffect(()=>{
     getPlansObserver();
   },[])
