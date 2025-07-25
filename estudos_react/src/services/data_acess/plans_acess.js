@@ -1,24 +1,54 @@
 import { db } from "../../lib/firebase_config";
-import { collection, addDoc, setDoc, doc } from 'firebase/firestore';
+import { collection, addDoc, setDoc, doc, updateDoc, getDocs } from 'firebase/firestore';
 
-export const addPlansAcess = async () =>{
+export const addPlansAcess = async (planData) =>{
     try{
-        const plans_refference  = await addDoc(collection(db,'plans'),{
-            text: "Test",
-            value: 11
-        });
+        const plans_refference  = await addDoc(collection(db,'plans'),planData);
         console.log("funcionou. DocRef: " , plans_refference.id)
+        return plans_refference.id;
     }catch (e){
         console.log("erro: ", e)
+        throw e;
     }
 }
 
-export const SetPlansAcess = async (planId, planData) => {
+export const setPlansAcess = async (planId, planData) => {
     try{
         const plans_refference = doc(db, 'plans', planId);
         await setDoc(plans_refference, planData);
         console.log("sucesso! Id: ", planId)
+        return planId;
+    } catch(e){
+        console.log("erro: ", e);
+        throw e;
+    }
+}
+
+export const updatePlansAcess = async (planId, planData) => {
+    try{
+        const plans_refference = doc(db, 'plans', planId);
+        await updateDoc(plans_refference, planData);
+        console.log("sucesso! Id: ", planId)
+        return planId;
     } catch(e){
         console.log("erro: ", e)
+        throw e;
     }
+}
+
+export const getPlansAcess = async () =>{
+    try{
+        const res = await getDocs(collection(db, 'plans'));
+
+        const plans = res.docs.map(doc =>({
+            id: doc.id,
+            ...doc.data()
+        }));
+        console.log('funcionando. Retorno: ', plans)
+        return plans;
+    }catch(e){
+        console.log('erro: ', e);
+        throw e;
+    }
+   
 }

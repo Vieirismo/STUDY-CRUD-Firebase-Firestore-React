@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import React, {useEffect} from 'react';
-import { addPlansAcess } from './services/data_acess/plans_acess';
+import { setPlansAction, addPlansAction, updatePlansAction, getPlansAction } from './services/actions/plans_actions';
+import { getPlansObserver } from './services/observers/plansObserver';
 
 function App() {
   useEffect(()=>{
-    addPlansAcess()
+    getPlansObserver();
   },[])
   return (
     <div className="App">
