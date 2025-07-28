@@ -1,4 +1,5 @@
-import { addPlansAcess, getPlansAcess, setPlansAcess, updatePlansAcess } from "../data_acess/plans_acess";
+import { db } from "../../lib/firebase_config";
+import { addPlansAcess, deletePlansAcess, getPlansAcess, setPlansAcess, updatePlansAcess } from "../data_acess/plans_acess";
 
 export async function addPlansAction(planData) {
     try{
@@ -43,4 +44,23 @@ export async function getPlansAction() {
         console.error("erro: ", e);
     }
    
+}
+
+export async function deletePlansAction(planId) {
+    try{
+        if(!planId){
+            throw new Error("é necessário inserir um ID");
+        }
+        const docRef = await deletePlansAcess(planId);
+        if(docRef){
+            console.log('sucesso ao apagar o doc ', planId)
+            return {message: 'Plan deletada com sucesso!'}
+        }
+        else{
+            throw new Error("não foi possível encontrar a plan");
+        }
+    }catch(e){
+        console.log("erro: ", e);
+        throw e;
+    }
 }

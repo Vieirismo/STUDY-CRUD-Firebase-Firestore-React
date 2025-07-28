@@ -1,5 +1,5 @@
 import { db } from "../../lib/firebase_config";
-import { collection, addDoc, setDoc, doc, updateDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, setDoc, doc, updateDoc, getDocs, getDoc, deleteDoc } from 'firebase/firestore';
 
 export const addPlansAcess = async (planData) =>{
     try{
@@ -52,3 +52,8 @@ export const getPlansAcess = async () =>{
     }
    
 }
+
+export const deletePlansAcess = async (planId) => {
+    await deleteDoc(doc(db, 'plans', planId));
+    return true; 
+};
