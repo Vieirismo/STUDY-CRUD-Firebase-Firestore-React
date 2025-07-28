@@ -1,100 +1,70 @@
-# 🚀 Estudos React com Firebase Firestore (CRUD em Tempo Real)
+# Getting Started with Create React App
 
-Este projeto é um ambiente de estudo e prática focado na construção de um aplicativo React que interage com o Firebase Firestore em tempo real. Ele demonstra as operações básicas de CRUD (Criar, Ler, Atualizar, Deletar) para gerenciar "planos", utilizando as melhores práticas de organização de código e o SDK modular v9 do Firebase.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-**Até o presente momento, apenas o back-end (integração com Firebase Firestore) está totalmente funcional e pronta. Os resultados de cada operação (criação, leitura, atualização, deleção) podem ser vistos no console do navegador e diretamente no console do Firebase Firestore.**
+## Available Scripts
 
----
+In the project directory, you can run:
 
-## ✨ Funcionalidades
+### `npm start`
 
-* **Gerenciamento de Planos:** Adicione, defina (crie/sobrescreva), atualize e delete planos no Firestore.
-* **Dados em Tempo Real:** Utilize listeners do Firestore para observar e exibir atualizações de planos instantaneamente no frontend.
-* **Filtragem de Dados:** Exemplo de uso de consultas `where` para filtrar planos com base em critérios específicos.
-* **Organização de Código:** Separação clara entre a camada de "acesso a dados" (interação direta com o Firebase) e a camada de "ações" (lógica de negócio).
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
----
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## 🛠️ Tecnologias Utilizadas
+### `npm test`
 
-* **React:** Biblioteca JavaScript para construção de interfaces de usuário.
-* **Firebase:**
-    * **Firestore:** Banco de dados NoSQL flexível e escalável para armazenamento e sincronização de dados em tempo real.
-    * **Firebase CLI:** Ferramenta de linha de comando para gerenciar projetos Firebase (incluindo Hosting).
-* **JavaScript:** Linguagem de programação principal.
-* **HTML/CSS:** Estrutura e estilização básica do aplicativo.
-* **(Opcional para você: PropTypes)**: Biblioteca para validação de tipos de `props` em componentes React (em projetos JavaScript puro).
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
----
+### `npm run build`
 
-## ⚙️ Como Rodar o Projeto
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-Siga estes passos para configurar e executar o projeto em sua máquina local:
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### Pré-requisitos
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-* Node.js (versão 14 ou superior recomendada)
-* npm (gerenciador de pacotes do Node.js)
-* Conta Firebase e um projeto configurado no console.
+### `npm run eject`
 
-### Instalação e Configuração
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-1.  **Clone o Repositório:**
-    ```bash
-    git clone [https://github.com/SeuUsuario/SeuRepositorio.git](https://github.com/SeuUsuario/SeuRepositorio.git) # Altere para o link do seu repo
-    cd nome-da-pasta-do-seu-projeto # Ex: cd estudos_react
-    ```
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-2.  **Instale as Dependências:**
-    ```bash
-    npm install
-    ```
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-3.  **Configurar Firebase Localmente:**
-    * Instale as ferramentas Firebase CLI globalmente (se ainda não tiver):
-        ```bash
-        npm install -g firebase-tools
-        ```
-    * Faça login na sua conta Firebase:
-        ```bash
-        firebase login
-        ```
-    * Inicialize o Firebase no seu projeto (na raiz do `estudos_react`):
-        ```bash
-        firebase init
-        ```
-        * Selecione `Hosting`.
-        * Escolha `Use an existing project` e selecione `estudos-next-f68b0` (ou o nome do seu projeto Firebase).
-        * Para o diretório público, digite `build` (se usou Create React App).
-        * Configure como um aplicativo de página única: `Yes`.
-        * Não configure GitHub Actions (a menos que você queira).
-        * **Atenção:** Se tiver erros como "Firebase Data Connect API has not been used", acesse o link fornecido no terminal para habilitar a API manualmente no console do Google Cloud e tente `firebase init` novamente.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-4.  **Configurar Credenciais do Firebase:**
-    * Crie um arquivo `src/lib/firebase_config.js` (ou onde quer que você esteja inicializando o Firebase).
-    * Cole suas credenciais do Firebase (encontradas nas configurações do seu projeto Firebase > "Configurações do projeto" > "Seus aplicativos" > "Web" > "Configuração").
+## Learn More
 
-    ```javascript
-    // src/lib/firebase_config.js
-    import { initializeApp } from "firebase/app";
-    import { getFirestore } from "firebase/firestore"; // Importe getFirestore do módulo correto
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-    const firebaseConfig = {
-      apiKey: "SUA_API_KEY",
-      authDomain: "SEU_AUTH_DOMAIN",
-      projectId: "SEU_PROJECT_ID",
-      storageBucket: "SEU_STORAGE_BUCKET",
-      messagingSenderId: "SEU_MESSAGING_SENDER_ID",
-      appId: "SEU_APP_ID"
-    };
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-    const app = initializeApp(firebaseConfig);
-    export const db = getFirestore(app);
-    ```
+### Code Splitting
 
-### Rodando o Servidor de Desenvolvimento
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-Após a configuração, você pode iniciar o aplicativo:
+### Analyzing the Bundle Size
 
-```bash
-npm start
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -23,8 +23,8 @@ yarn-debug.log*
 yarn-error.log*
 
 
-testeRealDB
-testeRemoteConfig
-y
+/testeRealDB
+/testeRemoteConfig
+/y
 /testeq
 /dataconnect-generated
