@@ -5,31 +5,28 @@ import { setPlansAction, addPlansAction, updatePlansAction, getPlansAction } fro
 import { getPlansObserver } from './services/observers/plansObserver';
 
 function App() {
-  const [plans, setPlans] = useState();
+  const [plans, setPlans] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const planFilter = 12;
   
   useEffect(()=>{
-    getPlansObserver();
-  },[])
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const unsubscribe = getPlansObserver((data, e) =>{
+      if(e){
+        console.log('erro em executar observer: ', e);
+        setError(e);
+        setLoading(false);
+        return;
+      }
+      setPlans(data);
+      setLoading(false);
+    }, planFilter)
+    return () =>{
+    console.log('desinscrevendo do observer')
+    unsubscribe();
+  }
+  },[planFilter])
 }
 
 export default App;

@@ -1,14 +1,14 @@
 import React from "react";
 import { db } from "../../lib/firebase_config"; 
-import { collection, onSnapshot} from 'firebase/firestore';
+import { collection, onSnapshot, query, where} from 'firebase/firestore';
 
-
-
-export function getPlansObserver(callback) {
+export function getPlansObserver(callback, filter = null) {
     try {
-      
-        const plansCollectionRef = collection(db, 'plans');
-
+        let plansCollectionRef = collection(db, 'plans');
+        
+        if(filter !== null){
+            plansCollectionRef = query(plansCollectionRef, where('value', '==', filter));
+        }
       
         const unsubscribe = onSnapshot(plansCollectionRef, (querySnapshot) => {
             const plans = [];
