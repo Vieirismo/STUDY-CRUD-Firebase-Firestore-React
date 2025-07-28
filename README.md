@@ -2,7 +2,7 @@
 
 Este projeto é um ambiente de estudo e prática focado na construção de um aplicativo React que interage com o Firebase Firestore em tempo real. Ele demonstra as operações básicas de CRUD (Criar, Ler, Atualizar, Deletar) para gerenciar "planos", utilizando as melhores práticas de organização de código e o SDK modular v9 do Firebase.
 
-**Até o presente momento, a parte do back-end (integração com Firebase Firestore) está totalmente funcional e pronta. Os resultados de cada operação (criação, leitura, atualização, deleção) podem ser vistos no console do navegador e diretamente no console do Firebase Firestore.**
+**Até o presente momento, apenas o back-end (integração com Firebase Firestore) está totalmente funcional e pronta. Os resultados de cada operação (criação, leitura, atualização, deleção) podem ser vistos no console do navegador e diretamente no console do Firebase Firestore.**
 
 ---
 
