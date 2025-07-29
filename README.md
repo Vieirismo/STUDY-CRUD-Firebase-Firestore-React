@@ -41,7 +41,7 @@ Follow these steps to set up and run the project on your local machine:
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [https://github.com/Vieirismo/-ESTUDO-CRUD-Firebase-Firestore-React](https://github.com/Vieirismo/-ESTUDO-CRUD-Firebase-Firestore-React)
+    git clone https://github.com/Vieirismo/STUDY-CRUD-Firebase-Firestore-React
     cd folder-name # Replace with your project's folder name
     ```
 
