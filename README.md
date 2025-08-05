@@ -47,7 +47,7 @@ Follow these steps to set up and run the project on your local machine:
 
 2.  **Install Dependencies:**
     ```bash
-    npm install
+    npm install firebase prop-types
     ```
 
 3.  **Configure Firebase Locally:**
@@ -59,7 +59,7 @@ Follow these steps to set up and run the project on your local machine:
         ```bash
         firebase login
         ```
-    * Initialize Firebase in your project (from the root of your `estudos_react` folder):
+    * Initialize Firebase in your project:
         ```bash
         firebase init
         ```
